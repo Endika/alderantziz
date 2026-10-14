@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/Endika/alderantziz/compare/v1.0.0...v1.1.0) (2026-10-14)
+
+
+### Features
+
+* keep each player on their own cassette side and spin the reels with the playback direction ([a6d3585](https://github.com/Endika/alderantziz/commit/a6d358539644a47400d19d1faab17dbe0d9b47b1))
+
 ## 1.0.0 (2026-10-14)
 
 
