@@ -21,6 +21,7 @@ export function SecretScreen({ controls, secret, onRecorded, onNext }: SecretScr
       title={t('secret.title')}
       hint={t('secret.hint')}
       deck={controls.deck}
+      side="A"
       problem={controls.problem}
       footer={
         <Key tone="brand" glyph="→" disabled={!secret || !idle} onClick={onNext}>

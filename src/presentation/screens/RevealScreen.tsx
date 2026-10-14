@@ -28,6 +28,7 @@ export function RevealScreen({ controls, secret, imitation, onRestart }: RevealS
       title={t('reveal.title')}
       hint={t('reveal.hint')}
       deck={deck}
+      side={playing === 'imitation' ? 'B' : 'A'}
       problem={controls.problem}
       footer={
         <Key
