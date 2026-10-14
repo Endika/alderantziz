@@ -1,0 +1,48 @@
+{
+  "tagline": "Dilo al revés",
+  "language": "Idioma",
+  "version": "Versión {{version}}",
+  "privacy": "El audio no sale de tu móvil",
+  "steps": {
+    "label": "Paso {{step}} de 3",
+    "secret": "Secreto",
+    "imitate": "Imitación",
+    "reveal": "Resultado"
+  },
+  "cassette": { "label": "Cinta de cassette, cara {{side}}" },
+  "keys": {
+    "rec": "Grabar",
+    "stop": "Parar",
+    "play": "Escuchar",
+    "reverse": "Al revés",
+    "retake": "Repetir"
+  },
+  "seconds": "{{seconds}} s",
+  "saving": "Guardando…",
+  "secret": {
+    "title": "La frase secreta",
+    "hint": "Graba una palabra o una frase corta sin que te oiga quien va a imitarla. Tienes 10 segundos.",
+    "recorded": "Grabada. Nadie la oirá del derecho hasta el final.",
+    "next": "Listo, pasa el móvil"
+  },
+  "imitate": {
+    "title": "Escucha e imita",
+    "hint": "Suena al revés. Escúchalo las veces que quieras y grábate repitiendo lo que oyes, tal cual.",
+    "recorded": "Imitación grabada.",
+    "next": "¿Qué has dicho?"
+  },
+  "reveal": {
+    "title": "¿Qué has dicho?",
+    "hint": "Primero la frase de verdad, después tu imitación dada la vuelta.",
+    "both": "Escuchar las dos",
+    "original": "Frase original",
+    "imitation": "Tu imitación, al revés",
+    "again": "Nueva ronda"
+  },
+  "errors": {
+    "denied": "El micrófono está bloqueado. Permítelo para esta web en los ajustes del navegador y vuelve a intentarlo.",
+    "unavailable": "No encontramos ningún micrófono, o lo está usando otra app. Ciérrala y vuelve a intentarlo.",
+    "unsupported": "Este navegador no puede grabar audio. Prueba con Chrome o Safari actualizados.",
+    "saving": "No se pudo guardar la grabación. Vuelve a grabarla."
+  }
+}

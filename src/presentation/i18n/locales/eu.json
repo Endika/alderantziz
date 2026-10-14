@@ -1,0 +1,48 @@
+{
+  "tagline": "Esan alderantziz",
+  "language": "Hizkuntza",
+  "version": "{{version}} bertsioa",
+  "privacy": "Audioa ez da zure mugikorretik ateratzen",
+  "steps": {
+    "label": "{{step}}. urratsa, 3tik",
+    "secret": "Sekretua",
+    "imitate": "Imitazioa",
+    "reveal": "Emaitza"
+  },
+  "cassette": { "label": "Kasete-zinta, {{side}} aldea" },
+  "keys": {
+    "rec": "Grabatu",
+    "stop": "Gelditu",
+    "play": "Entzun",
+    "reverse": "Alderantziz",
+    "retake": "Errepikatu"
+  },
+  "seconds": "{{seconds}} s",
+  "saving": "Gordetzen…",
+  "secret": {
+    "title": "Esaldi sekretua",
+    "hint": "Grabatu hitz bat edo esaldi labur bat, imitatuko duenak entzun gabe. 10 segundo dituzu.",
+    "recorded": "Grabatuta. Inork ez du zuzenean entzungo amaierara arte.",
+    "next": "Prest, pasatu mugikorra"
+  },
+  "imitate": {
+    "title": "Entzun eta imitatu",
+    "hint": "Alderantziz entzungo duzu. Entzun nahi adina aldiz eta grabatu entzuten duzuna, dagoen-dagoenean.",
+    "recorded": "Imitazioa grabatuta.",
+    "next": "Zer esan duzu?"
+  },
+  "reveal": {
+    "title": "Zer esan duzu?",
+    "hint": "Lehenengo benetako esaldia, gero zure imitazioa buelta emanda.",
+    "both": "Biak entzun",
+    "original": "Jatorrizko esaldia",
+    "imitation": "Zure imitazioa, alderantziz",
+    "again": "Beste txanda bat"
+  },
+  "errors": {
+    "denied": "Mikrofonoa blokeatuta dago. Baimendu webgune honetarako nabigatzailearen ezarpenetan eta saiatu berriro.",
+    "unavailable": "Ez dugu mikrofonorik aurkitu, edo beste aplikazio bat erabiltzen ari da. Itxi eta saiatu berriro.",
+    "unsupported": "Nabigatzaile honek ezin du audiorik grabatu. Probatu Chrome edo Safari eguneratuta.",
+    "saving": "Ezin izan da grabazioa gorde. Grabatu berriro."
+  }
+}

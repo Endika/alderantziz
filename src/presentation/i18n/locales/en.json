@@ -1,0 +1,48 @@
+{
+  "tagline": "Say it backwards",
+  "language": "Language",
+  "version": "Version {{version}}",
+  "privacy": "Audio never leaves your phone",
+  "steps": {
+    "label": "Step {{step}} of 3",
+    "secret": "Secret",
+    "imitate": "Imitation",
+    "reveal": "Reveal"
+  },
+  "cassette": { "label": "Cassette tape, side {{side}}" },
+  "keys": {
+    "rec": "Record",
+    "stop": "Stop",
+    "play": "Play",
+    "reverse": "Backwards",
+    "retake": "Retake"
+  },
+  "seconds": "{{seconds}} s",
+  "saving": "Saving…",
+  "secret": {
+    "title": "The secret phrase",
+    "hint": "Record a word or a short phrase without the imitator hearing it. You have 10 seconds.",
+    "recorded": "Recorded. Nobody hears it the right way round until the end.",
+    "next": "Done, pass the phone"
+  },
+  "imitate": {
+    "title": "Listen and imitate",
+    "hint": "It plays backwards. Listen as often as you like, then record yourself repeating exactly what you hear.",
+    "recorded": "Imitation recorded.",
+    "next": "What did you say?"
+  },
+  "reveal": {
+    "title": "What did you say?",
+    "hint": "First the real phrase, then your imitation turned around.",
+    "both": "Play both",
+    "original": "Original phrase",
+    "imitation": "Your imitation, backwards",
+    "again": "New round"
+  },
+  "errors": {
+    "denied": "The microphone is blocked. Allow it for this site in your browser settings and try again.",
+    "unavailable": "No microphone found, or another app is using it. Close it and try again.",
+    "unsupported": "This browser can't record audio. Try an up-to-date Chrome or Safari.",
+    "saving": "The recording couldn't be saved. Record it again."
+  }
+}
