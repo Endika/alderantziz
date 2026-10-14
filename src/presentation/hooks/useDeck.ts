@@ -42,6 +42,8 @@ export function useDeck(audio: AudioPort): DeckControls {
   const playback = useRef<Playback | null>(null)
   // Bumped on every stop so an interrupted sequence does not start its next track.
   const session = useRef(0)
+  // Mirrors the deck synchronously: a tap can land before React re-renders the disabled key.
+  const busy = useRef(false)
 
   const stopPlayback = useCallback(() => {
     session.current += 1
@@ -60,11 +62,14 @@ export function useDeck(audio: AudioPort): DeckControls {
     } catch {
       setProblem('saving')
     }
+    busy.current = false
     setDeck({ status: 'idle' })
   }, [])
 
   const record = useCallback(
     async (onClip: (clip: Clip) => void) => {
+      if (busy.current) return
+      busy.current = true
       stopPlayback()
       setProblem(null)
       setDeck({ status: 'arming' })
@@ -75,6 +80,7 @@ export function useDeck(audio: AudioPort): DeckControls {
         setDeck({ status: 'recording', startedAt: performance.now() })
       } catch (error) {
         setProblem(error instanceof MicFailure ? error.problem : 'unavailable')
+        busy.current = false
         setDeck({ status: 'idle' })
       }
     },
@@ -83,6 +89,7 @@ export function useDeck(audio: AudioPort): DeckControls {
 
   const play = useCallback<DeckControls['play']>(
     async (tracks) => {
+      if (busy.current) return
       stopPlayback()
       const mine = session.current
       for (const { id, clip, direction } of tracks) {
@@ -111,6 +118,7 @@ export function useDeck(audio: AudioPort): DeckControls {
       void finishTake()
       return
     }
+    if (busy.current) return
     stopPlayback()
     setDeck({ status: 'idle' })
   }, [finishTake, stopPlayback])

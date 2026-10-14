@@ -54,21 +54,32 @@ export class BrowserAudio implements AudioPort {
     } catch (error) {
       throw toMicFailure(error)
     }
-    const mimeType = pickMimeType((type) => MediaRecorder.isTypeSupported(type))
-    const recorder = new MediaRecorder(stream, mimeType ? { mimeType } : undefined)
-    const chunks: Blob[] = []
-    recorder.addEventListener('dataavailable', (event) => chunks.push(event.data))
     const release = (): void => stream.getTracks().forEach((track) => track.stop())
-    const stopped = new Promise<void>((resolve) =>
-      recorder.addEventListener('stop', () => resolve(), { once: true }),
-    )
-    recorder.start()
+    const chunks: Blob[] = []
+    let recorder: MediaRecorder
+    let stopped: Promise<void>
+    try {
+      const mimeType = pickMimeType((type) => MediaRecorder.isTypeSupported(type))
+      recorder = new MediaRecorder(stream, mimeType ? { mimeType } : undefined)
+      recorder.addEventListener('dataavailable', (event) => chunks.push(event.data))
+      stopped = new Promise<void>((resolve) =>
+        recorder.addEventListener('stop', () => resolve(), { once: true }),
+      )
+      recorder.start()
+    } catch {
+      release()
+      throw new MicFailure('unsupported')
+    }
 
     return {
       stop: async () => {
-        recorder.stop()
-        await stopped
-        release()
+        // iOS stops the recorder on its own on a call or Siri; the chunks are still there.
+        try {
+          if (recorder.state !== 'inactive') recorder.stop()
+          await stopped
+        } finally {
+          release()
+        }
         const blob = new Blob(chunks, { type: recorder.mimeType })
         const forward = await context.decodeAudioData(await blob.arrayBuffer())
         return new BrowserClip(forward, reversed(context, forward))

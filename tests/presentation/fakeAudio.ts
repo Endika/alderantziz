@@ -8,7 +8,8 @@ export interface FakeClip extends Clip {
 export class FakeAudio implements AudioPort {
   readonly played: { clip: FakeClip; direction: Direction }[] = []
   failure: MicFailure | null = null
-  private takes = 0
+  /** How many recordings were started. */
+  takes = 0
   private pending: (() => void)[] = []
 
   async record(): Promise<Take> {
