@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next'
 import { Cassette } from './Cassette'
-import { MAX_SECONDS, type Deck } from '../hooks/useDeck'
+import { MAX_SECONDS, type Deck } from '@/application/deck/tapeDeck'
 import { useProgress } from '../hooks/useProgress'
 
-export function TapeDeck({ deck }: { deck: Deck }) {
+export function DeckDisplay({ deck }: { deck: Deck }) {
   const { t } = useTranslation()
   const recording = deck.status === 'recording'
   const playing = deck.status === 'playing'

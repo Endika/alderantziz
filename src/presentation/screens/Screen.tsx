@@ -1,7 +1,7 @@
 import { useEffect, useRef, type ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
-import { TapeDeck } from '../components/TapeDeck'
-import type { Deck, DeckProblem } from '../hooks/useDeck'
+import { DeckDisplay } from '../components/DeckDisplay'
+import type { Deck, DeckProblem } from '@/application/deck/tapeDeck'
 
 interface ScreenProps {
   title: string
@@ -36,7 +36,7 @@ export function Screen({ title, hint, deck, problem, children, footer }: ScreenP
         </p>
       )}
       <div className="mt-6">
-        <TapeDeck deck={deck} />
+        <DeckDisplay deck={deck} />
       </div>
       <div className="mt-2 flex flex-col gap-3">{children}</div>
       <div className="mt-auto flex flex-col gap-3 pt-6">{footer}</div>

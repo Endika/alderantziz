@@ -1,5 +1,5 @@
-import { pickMimeType, toMicFailure } from '@/presentation/audio/browserAudio'
-import { MicFailure } from '@/presentation/audio/port'
+import { pickMimeType, toMicFailure } from '@/infrastructure/audio/browserAudio'
+import { MicFailure } from '@/application/audio/port'
 
 describe('pickMimeType', () => {
   it('prefers webm/opus where it is supported', () => {

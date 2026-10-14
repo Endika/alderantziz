@@ -6,7 +6,7 @@ import {
   type Direction,
   type Playback,
   type Take,
-} from './port'
+} from '@/application/audio/port'
 
 // Safari records only mp4; Chrome and Firefox prefer webm/opus.
 const MIME_CANDIDATES = ['audio/webm;codecs=opus', 'audio/mp4', 'audio/webm']
@@ -22,19 +22,12 @@ export function toMicFailure(error: unknown): MicFailure {
   return new MicFailure('unavailable')
 }
 
-class BrowserClip implements Clip {
-  constructor(
-    readonly forward: AudioBuffer,
-    readonly backward: AudioBuffer,
-  ) {}
-
-  get duration(): number {
-    return this.forward.duration
-  }
-}
+type Buffers = Record<Direction, AudioBuffer>
 
 export class BrowserAudio implements AudioPort {
   private context: AudioContext | null = null
+  // Clips stay opaque to the app; their decoded audio lives here and goes with them.
+  private readonly buffers = new WeakMap<Clip, Buffers>()
 
   // Created on the first tap: browsers keep an AudioContext made outside a gesture suspended.
   private audioContext(): AudioContext {
@@ -82,7 +75,9 @@ export class BrowserAudio implements AudioPort {
         }
         const blob = new Blob(chunks, { type: recorder.mimeType })
         const forward = await context.decodeAudioData(await blob.arrayBuffer())
-        return new BrowserClip(forward, reversed(context, forward))
+        const clip: Clip = { duration: forward.duration }
+        this.buffers.set(clip, { forward, backward: reversed(context, forward) })
+        return clip
       },
       cancel: () => {
         if (recorder.state !== 'inactive') recorder.stop()
@@ -92,10 +87,11 @@ export class BrowserAudio implements AudioPort {
   }
 
   play(clip: Clip, direction: Direction): Playback {
-    const { forward, backward } = clip as BrowserClip
+    const buffers = this.buffers.get(clip)
+    if (!buffers) throw new Error('This clip was not recorded by BrowserAudio')
     const context = this.audioContext()
     const source = context.createBufferSource()
-    source.buffer = direction === 'forward' ? forward : backward
+    source.buffer = buffers[direction]
     source.connect(context.destination)
     const ended = new Promise<void>((resolve) =>
       source.addEventListener('ended', () => resolve(), { once: true }),

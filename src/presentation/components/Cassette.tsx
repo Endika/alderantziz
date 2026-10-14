@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import type { Direction } from '../audio/port'
+import type { Direction } from '@/application/audio/port'
 
 interface CassetteProps {
   /** null while the tape is still. */

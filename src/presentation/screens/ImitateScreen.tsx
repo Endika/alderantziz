@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next'
-import type { Clip } from '../audio/port'
+import type { Clip } from '@/application/audio/port'
 import { Key } from '../components/Key'
 import type { DeckControls } from '../hooks/useDeck'
-import { RecordKey } from './RecordKey'
+import { RecordKey } from '../components/RecordKey'
 import { Screen } from './Screen'
 
 interface ImitateScreenProps {
