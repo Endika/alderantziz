@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
-import type { Clip } from '../audio/port'
-import { Key } from '../components/Key'
+import type { Clip } from '@/application/audio/port'
+import { Key } from './Key'
 import type { DeckControls } from '../hooks/useDeck'
 
 interface RecordKeyProps {

@@ -1,5 +1,5 @@
-import type { AudioPort, Clip, Direction, Playback, Take } from '@/presentation/audio/port'
-import { MicFailure } from '@/presentation/audio/port'
+import type { AudioPort, Clip, Direction, Playback, Take } from '@/application/audio/port'
+import { MicFailure } from '@/application/audio/port'
 
 export interface FakeClip extends Clip {
   name: string

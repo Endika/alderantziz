@@ -2,8 +2,8 @@ import { act, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import App from '@/presentation/App'
 import i18n from '@/presentation/i18n'
-import { MicFailure } from '@/presentation/audio/port'
-import { FakeAudio } from './fakeAudio'
+import { MicFailure } from '@/application/audio/port'
+import { FakeAudio } from '../fakes/fakeAudio'
 
 beforeAll(async () => {
   await i18n.changeLanguage('es')
