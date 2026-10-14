@@ -1,12 +1,14 @@
 import { useEffect, useRef, type ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import { DeckDisplay } from '../components/DeckDisplay'
+import type { Side } from '../components/Cassette'
 import type { Deck, DeckProblem } from '@/application/deck/tapeDeck'
 
 interface ScreenProps {
   title: string
   hint: string
   deck: Deck
+  side: Side
   problem: DeckProblem | null
   /** The transport keys under the cassette. */
   children: ReactNode
@@ -14,7 +16,7 @@ interface ScreenProps {
   footer: ReactNode
 }
 
-export function Screen({ title, hint, deck, problem, children, footer }: ScreenProps) {
+export function Screen({ title, hint, deck, side, problem, children, footer }: ScreenProps) {
   const { t } = useTranslation()
   const heading = useRef<HTMLHeadingElement>(null)
 
@@ -36,7 +38,7 @@ export function Screen({ title, hint, deck, problem, children, footer }: ScreenP
         </p>
       )}
       <div className="mt-6">
-        <DeckDisplay deck={deck} />
+        <DeckDisplay deck={deck} side={side} />
       </div>
       <div className="mt-2 flex flex-col gap-3">{children}</div>
       <div className="mt-auto flex flex-col gap-3 pt-6">{footer}</div>

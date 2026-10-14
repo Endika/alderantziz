@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next'
-import { Cassette } from './Cassette'
+import { Cassette, type Side } from './Cassette'
 import { MAX_SECONDS, type Deck } from '@/application/deck/tapeDeck'
 import { useProgress } from '../hooks/useProgress'
 
-export function DeckDisplay({ deck }: { deck: Deck }) {
+export function DeckDisplay({ deck, side }: { deck: Deck; side: Side }) {
   const { t } = useTranslation()
   const recording = deck.status === 'recording'
   const playing = deck.status === 'playing'
@@ -14,6 +14,7 @@ export function DeckDisplay({ deck }: { deck: Deck }) {
   return (
     <div className="flex flex-col items-center gap-3">
       <Cassette
+        side={side}
         motion={recording ? 'forward' : playing ? deck.direction : null}
         progress={progress}
         recording={recording}

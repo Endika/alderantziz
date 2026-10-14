@@ -83,7 +83,7 @@ h1[tabindex='-1']:focus {
 }
 
 /* ---- Cassette ------------------------------------------------------------ */
-/* Side A faces the player; playing backwards flips the tape over to side B. */
+/* The secret is on side A and the imitation on side B; the reels spin with the playback direction. */
 .cassette-scene {
   perspective: 1200px;
 }

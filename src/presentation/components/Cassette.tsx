@@ -1,7 +1,11 @@
 import { useTranslation } from 'react-i18next'
 import type { Direction } from '@/application/audio/port'
 
+/** The secret lives on side A and the imitation on side B. */
+export type Side = 'A' | 'B'
+
 interface CassetteProps {
+  side: Side
   /** null while the tape is still. */
   motion: Direction | null
   /** Share of the tape already wound onto the right reel, 0..1. */
@@ -12,9 +16,8 @@ interface CassetteProps {
 const FULL = 34
 const EMPTY = 13
 
-export function Cassette({ motion, progress, recording = false }: CassetteProps) {
+export function Cassette({ side, motion, progress, recording = false }: CassetteProps) {
   const { t } = useTranslation()
-  const side = motion === 'backward' ? 'B' : 'A'
   return (
     <div
       className="cassette-scene mx-auto w-full max-w-[20rem]"
@@ -26,14 +29,14 @@ export function Cassette({ motion, progress, recording = false }: CassetteProps)
           <Face side="A" motion={motion} progress={progress} recording={recording} />
         </div>
         <div className="cassette-face cassette-face-b">
-          <Face side="B" motion={motion} progress={progress} recording={false} />
+          <Face side="B" motion={motion} progress={progress} recording={recording} />
         </div>
       </div>
     </div>
   )
 }
 
-function Face({ side, motion, progress, recording }: CassetteProps & { side: 'A' | 'B' }) {
+function Face({ side, motion, progress, recording }: CassetteProps) {
   // Backwards the tape winds back onto the left reel.
   const wound = motion === 'backward' ? 1 - progress : progress
   const left = FULL - (FULL - EMPTY) * wound

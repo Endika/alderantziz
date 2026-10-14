@@ -30,6 +30,7 @@ export function ImitateScreen({
       title={t('imitate.title')}
       hint={t('imitate.hint')}
       deck={deck}
+      side={playingSecret || (idle && !imitation) ? 'A' : 'B'}
       problem={controls.problem}
       footer={
         <Key tone="brand" glyph="→" disabled={!imitation || !idle} onClick={onNext}>

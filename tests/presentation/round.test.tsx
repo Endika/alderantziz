@@ -10,6 +10,8 @@ beforeAll(async () => {
 })
 
 const key = (name: RegExp): HTMLElement => screen.getByRole('button', { name })
+const side = (): string | null =>
+  screen.getByRole('img', { name: /cassette/i }).getAttribute('aria-label')
 
 async function recordTake(user: ReturnType<typeof userEvent.setup>): Promise<void> {
   await user.click(key(/grabar|repetir/i))
@@ -36,6 +38,30 @@ describe('a round', () => {
     await act(async () => audio.finishPlayback())
     await act(async () => audio.finishPlayback())
     expect(audio.playlist).toEqual(['take-1 backward', 'take-1 forward', 'take-2 backward'])
+  })
+
+  it('keeps the secret on side A and the imitation on side B, whichever way they play', async () => {
+    const audio = new FakeAudio()
+    const user = userEvent.setup()
+    render(<App audio={audio} />)
+
+    await user.click(key(/grabar/i))
+    expect(side()).toMatch(/cara A/)
+    await user.click(key(/parar/i))
+    await user.click(key(/pasa el móvil/i))
+
+    await user.click(key(/al revés/i))
+    expect(side()).toMatch(/cara A/)
+    await act(async () => audio.finishPlayback())
+    await user.click(key(/grabar/i))
+    expect(side()).toMatch(/cara B/)
+    await user.click(key(/parar/i))
+    expect(side()).toMatch(/cara B/)
+    await user.click(key(/qué has dicho/i))
+
+    expect(side()).toMatch(/cara A/)
+    await act(async () => audio.finishPlayback())
+    expect(side()).toMatch(/cara B/)
   })
 
   it('starts over without any recording', async () => {
