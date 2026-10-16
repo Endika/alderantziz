@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/Endika/alderantziz/compare/v1.1.1...v1.1.2) (2026-10-16)
+
+
+### Bug Fixes
+
+* change the manifest start_url and filename too so Chrome offers to install it again ([01f22f9](https://github.com/Endika/alderantziz/commit/01f22f9cf256621c7761900da94d6fd83e1d0db5))
+
 ## [1.1.1](https://github.com/Endika/alderantziz/compare/v1.1.0...v1.1.1) (2026-10-16)
 
 
