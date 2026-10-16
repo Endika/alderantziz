@@ -19,6 +19,7 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
+      manifestFilename: 'app.webmanifest',
       includeAssets: ['favicon.svg', 'favicon.png', 'apple-touch-icon.png'],
       manifest: {
         name: 'Alderantziz',
@@ -27,10 +28,11 @@ export default defineConfig({
         theme_color: '#f6efe3',
         background_color: '#f6efe3',
         display: 'standalone',
-        // Chrome keeps an aborted install of an id marked as installed, with no
-        // way to clear it on the phone; a new id is the only way to offer it again.
-        id: '/alderantziz/?app=alderantziz-2',
-        start_url: '/alderantziz/',
+        // Chrome on Android keeps an aborted install marked as installed, with no
+        // way to clear it on the phone. A new id alone didn't free it, so the id,
+        // start_url and manifest filename all change to look like a new app.
+        id: '/alderantziz/?app=alderantziz-3',
+        start_url: '/alderantziz/?utm_source=homescreen',
         scope: '/alderantziz/',
         icons: [
           { src: 'icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
