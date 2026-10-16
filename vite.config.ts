@@ -27,9 +27,9 @@ export default defineConfig({
         theme_color: '#f6efe3',
         background_color: '#f6efe3',
         display: 'standalone',
-        // An explicit id lets Chrome offer a clean install again after an
-        // uninstall it never registered.
-        id: '/alderantziz/?app=alderantziz',
+        // Chrome keeps an aborted install of an id marked as installed, with no
+        // way to clear it on the phone; a new id is the only way to offer it again.
+        id: '/alderantziz/?app=alderantziz-2',
         start_url: '/alderantziz/',
         scope: '/alderantziz/',
         icons: [
