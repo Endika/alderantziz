@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/Endika/alderantziz/compare/v1.1.0...v1.1.1) (2026-10-16)
+
+
+### Bug Fixes
+
+* give the web app manifest a new id so Chrome offers to install it again ([e8714fa](https://github.com/Endika/alderantziz/commit/e8714fa1ed79a4d8757ae609d2b741721a84f593))
+
 ## [1.1.0](https://github.com/Endika/alderantziz/compare/v1.0.0...v1.1.0) (2026-10-14)
 
 
