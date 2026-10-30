@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://github.com/Endika/alderantziz/compare/v1.1.2...v1.1.3) (2026-10-30)
+
+
+### Bug Fixes
+
+* **deps:** bump undici to 8.12.2 and serialize-javascript to 7.1.3 ([ee3f0b7](https://github.com/Endika/alderantziz/commit/ee3f0b7ca0b362c89b8a259240cddf9e4431393b))
+
 ## [1.1.2](https://github.com/Endika/alderantziz/compare/v1.1.1...v1.1.2) (2026-10-16)
 
 
