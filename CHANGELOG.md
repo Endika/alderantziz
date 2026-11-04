@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.4](https://github.com/Endika/alderantziz/compare/v1.1.3...v1.1.4) (2026-11-04)
+
+
+### Bug Fixes
+
+* **deps:** force minimatch ^11.0.1 to patch GHSA-g3hv-75wg-m249 ([c804336](https://github.com/Endika/alderantziz/commit/c8043364b701681b6009a2d93c7f10ae3b8d3d12))
+
 ## [1.1.3](https://github.com/Endika/alderantziz/compare/v1.1.2...v1.1.3) (2026-10-30)
 
 
