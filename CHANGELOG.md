@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.5](https://github.com/Endika/alderantziz/compare/v1.1.4...v1.1.5) (2026-11-23)
+
+
+### Bug Fixes
+
+* **pwa:** precache the app again so installed apps update ([281bb67](https://github.com/Endika/alderantziz/commit/281bb67def412de5b9aa7757dd820e3c3a4703a5))
+
 ## [1.1.4](https://github.com/Endika/alderantziz/compare/v1.1.3...v1.1.4) (2026-11-04)
 
 
